@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Card from "../components/card";
 
-import "./work.css";
+import "./Work.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
