@@ -1,0 +1,31 @@
+.work-section {
+  position: relative;
+  background: #F0EDE5;
+  justify-content: center;
+  align-items: center;  
+  
+}
+
+/* PINNED AREA */
+.work-horizontal {
+  height: 100vh;
+  overflow: hidden;
+}
+.work-heading {
+  font-size: clamp(4rem, 5vw, 4rem);
+  margin: 0 auto 4rem auto;   /* center horizontally */
+  font-weight: 500;
+  line-height: 1.2;
+  max-width: 900px;
+  color: #004643;
+  text-align: center;         /* center text */
+}
+
+/* 🚨 MOST IMPORTANT LINE */
+.work-track {
+  display: flex;          /* MUST */
+  flex-direction: row;   /* MUST */
+  gap: 4rem;
+  padding: 0 6rem;
+  width: max-content;    /* MUST */
+}

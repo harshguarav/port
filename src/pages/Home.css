@@ -1,0 +1,59 @@
+.role-text {
+  display: inline-block;
+  color: #004643;
+  font-size: 14px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+.hero-name-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Base text */
+.hero-name.base {
+  font-size: 72px;
+   color: #004643;
+}
+
+/* Magnified layer */
+.hero-name.magnified {
+  position: absolute;
+  inset: 0;
+  font-size: 84px; /* 👈 magnified size */
+   color: #004643;
+  pointer-events: none;
+
+  /* Mask setup */
+  --x: 0px;
+  --y: 0px;
+  --r: 0px;
+
+  mask-image: radial-gradient(
+    circle var(--r) at var(--x) var(--y),
+    black 0%,
+    black 60%,
+    transparent 70%
+  );
+
+  -webkit-mask-image: radial-gradient(
+    circle var(--r) at var(--x) var(--y),
+    black 0%,
+    black 60%,
+    transparent 70%
+  );
+}
+.hero-tagline {
+  margin-top: 1rem;
+  margin-left: 2cm;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  line-height: 1.4;
+  color: #004643;
+  max-width: 600px;
+}
+
+.hero-tagline .highlight {
+  display: inline-block;
+  font-weight: 600;
+  color: #001e1d;
+}

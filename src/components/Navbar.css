@@ -1,0 +1,116 @@
+/* =========================
+   NAVBAR CONTAINER
+   ========================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1500px;
+
+  height: 70px;
+  padding: 0 60px;
+
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 🔥 center base layout */
+  gap: 60px;
+
+  z-index: 1000;
+}
+
+/* =========================
+   LEFT NAV LINKS
+   ========================= */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+
+
+/* =========================
+   NAV LINKS
+   ========================= */
+.nav-link {
+  color: #004643;
+  text-decoration: none;
+  font-size: 15px;
+  letter-spacing: 1px;
+  position: relative;
+  padding: 5px 0;
+}
+
+/* underline animation */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #004643;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* active route */
+.nav-link.active {
+  color: #004643;
+}
+
+/* =========================
+   LET'S TALK BUTTON
+   (design later if you want)
+   ========================= */
+.lets-talk-btn {
+    margin-right: 90px;
+  display: flex;
+  align-items: center;
+
+  background: #004643;
+  color: rgb(213, 212, 212);
+  border: none;
+
+  height: 48px;
+  border-radius: 999px;
+  overflow: hidden;
+
+  /* cursor: pointer; */
+  padding: 22px;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.lets-talk-btn:hover {
+  background: #b2b1b0;
+  color: #1b1919;
+  scale: 1.1;
+  transition: all 0.3s ease;
+}
+/* right side spacing */
+.nav-right {
+  display: flex;
+  align-items: center;
+  /* gap: 6px; */
+}
+
+/* optional: slightly different color for Get CV */
+.get-cv-btn {
+  background: transparent;
+  color: #004643;
+  border: 1px solid #004643;
+}
+
+.get-cv-btn:hover {
+  background: #004643;
+  color: #fff;
+  scale: 1.1;
+  transition: all 0.3s ease;
+}

@@ -1,0 +1,87 @@
+.stack-section {
+  min-height: 60vh;
+  padding: 8rem 0;
+  background: #F0EDE5;
+  color: #004643;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* horizontal center */
+}
+
+.tech-label {
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #004643;
+  margin-bottom: 1rem;
+}
+.stack-heading {
+   font-size: clamp(4rem, 5vw, 4rem);
+   align-items: center;
+   justify-content: center;
+    margin-bottom: 4rem;
+  font-weight: 500;
+  line-height: 1.2;
+  max-width: 900px;
+  color: #004643;
+
+}
+
+.marquee {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.marquee-row {
+  display: flex;
+  gap: 4rem;
+  white-space: nowrap;
+  align-items: center;
+}
+
+.marquee-row.reverse {
+  opacity: 0.9;
+}
+
+.tech {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.2rem;
+  opacity: 0.85;
+}
+
+.icon {
+  color: #004643;
+  font-size: 1.4rem;
+}
+
+/* FONT STYLES */
+.inter {
+  font-family: Inter, sans-serif;
+}
+
+.space {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.mono {
+  font-family: "JetBrains Mono", monospace;
+}
+
+.serif {
+  font-family: "Playfair Display", serif;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.mono.italic {
+  font-style: italic;
+}
