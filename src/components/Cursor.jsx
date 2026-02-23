@@ -6,8 +6,9 @@ import "./Cursor.css";
 const Cursor = () => {
   const dot = useRef(null);
   const eye = useRef(null);
+
   const [active, setActive] = useState(false);
-  const [hidden, setHidden] = useState(false); // 🔥 new state
+  const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
     if ("ontouchstart" in window) return;
@@ -17,16 +18,17 @@ const Cursor = () => {
     let lastTime = performance.now();
 
     const moveDot = (e) => {
-      // 🔥 hide cursor if over .dot-grid
       const overGrid = e.target.closest(".dot-grid");
-      setHidden(!!overGrid);
+      const shouldHide = !!overGrid;
+      setHidden(shouldHide);
 
-      if (hidden) return;
+      if (shouldHide) return;
 
       const now = performance.now();
       const dx = e.clientX - lastX;
       const dy = e.clientY - lastY;
       const dt = now - lastTime || 1;
+
       const velocity = Math.sqrt(dx * dx + dy * dy) / dt;
       const elasticity = gsap.utils.clamp(0.15, 0.6, velocity * 0.4);
 
@@ -42,29 +44,32 @@ const Cursor = () => {
       lastTime = now;
     };
 
+    const handleMouseOver = (e) => {
+      if (e.target.closest(".card__media")) {
+        setActive(true);
+      }
+    };
+
+    const handleMouseOut = (e) => {
+      if (e.target.closest(".card__media")) {
+        setActive(false);
+      }
+    };
+
     window.addEventListener("mousemove", moveDot);
-
-    // Project image hover
-    const images = document.querySelectorAll(".card__media img");
-    const onEnter = () => setActive(true);
-    const onLeave = () => setActive(false);
-
-    images.forEach((img) => {
-      img.addEventListener("mouseenter", onEnter);
-      img.addEventListener("mouseleave", onLeave);
-    });
+    document.addEventListener("mouseover", handleMouseOver);
+    document.addEventListener("mouseout", handleMouseOut);
 
     return () => {
       window.removeEventListener("mousemove", moveDot);
-      images.forEach((img) => {
-        img.removeEventListener("mouseenter", onEnter);
-        img.removeEventListener("mouseleave", onLeave);
-      });
+      document.removeEventListener("mouseover", handleMouseOver);
+      document.removeEventListener("mouseout", handleMouseOut);
     };
-  }, [hidden]);
+  }, []);
 
   useEffect(() => {
     if (!dot.current || !eye.current) return;
+
     if (hidden) {
       gsap.to(dot.current, { opacity: 0, duration: 0.2 });
       return;
@@ -79,6 +84,7 @@ const Cursor = () => {
         duration: 0.25,
         ease: "power3.out",
       });
+
       gsap.to(eye.current, {
         opacity: 1,
         rotate: "+=180",
@@ -91,6 +97,7 @@ const Cursor = () => {
         backgroundColor: "#004643",
         duration: 0.25,
       });
+
       gsap.to(eye.current, {
         opacity: 0,
         rotate: 0,
@@ -101,7 +108,10 @@ const Cursor = () => {
 
   return (
     <div className="cursor-dot" ref={dot}>
-      <FaEye className="cursor-eye" ref={eye} />
+      <span className="cursor-eye" ref={eye}>
+        <FaEye />
+        {/* see me */}
+      </span>
     </div>
   );
 };
