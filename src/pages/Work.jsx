@@ -45,7 +45,7 @@ export default function Work() {
             image="/images/bingo.png"
             category="Real time Multiplayer"
             title="Bingo Game"
-            description="Engineered a scalable real-time bingo gaming platform supporting 100+ concurrent players..."
+            description="Engineered a scalable real-time bingo gaming platform supporting 100+ concurrent players, achieving 40% faster game-state synchronization by optimizing WebSocket-based communication protocols. Designed and deployed a load-balanced AWS EC2 architecture ensuring 99.9% uptime and sustaining 500+ requests per second under peak traffic"
             tags={["Next.js", "Prisma", "PostgreSQL", "AWS EC2", "WebSockets", "TypeScript"]}
             link="https://github.com/harshguarav/BINGO-main"
           />
@@ -54,7 +54,7 @@ export default function Work() {
             image="/images/url.png"
             category="System Design"
             title="MiniLink URL Shortener"
-            description="Designed and developed a scalable URL shortening service..."
+            description="Designed and developed a scalable URL shortening service with custom domain support, analytics dashboard, and secure token generation. Implemented a robust backend using Node.js and Express, integrated with MongoDB for efficient data storage and retrieval."
             tags={["Caching", "Express", "MongoDB", "Sharding", "Next.js", "Node"]}
             link="https://github.com/harshguarav/MiniLink"
           />
@@ -63,7 +63,7 @@ export default function Work() {
             image="/images/cpu.jpg"
             category="OS Visualizer"
             title="CPU Scheduler"
-            description="Developed a web-based OS and algorithm visualizer..."
+            description="Developed a web-based OS operating system and algorithm visualizer using React and D3.js, enabling users to interactively explore OS concepts and algorithmic processes. Implemented features such as process scheduling, memory management, and sorting algorithm visualization, enhancing educational engagement and understanding of complex topics."
             tags={["C++", "D3.js", "Operating System", "File System", "STL"]}
             link="https://github.com/harshguarav/CPU_Scheduling/tree/main/CPU-Scheduler-main"
           />
@@ -72,7 +72,7 @@ export default function Work() {
             image="/images/employee.png"
             category="Employee Management System"
             title="Penthara HRMS"
-            description="Designed and developed a comprehensive employee management system..."
+            description="Designed and developed a comprehensive employee management system with features like attendance tracking, leave management, and performance reviews. Implemented a responsive UI using React and integrated with a RESTful backend API for seamless data synchronization."
             tags={["React", "Next.js", "Tailwind", "Node", "Prisma", "PostgreSQL"]}
             link="https://github.com/harshguarav/employee_directory"
           />

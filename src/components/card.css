@@ -3,7 +3,8 @@
   margin-top: 1rem;
   min-width: 420px;
   width: 850px;
-  height: 570px;                 /* 🔒 fixed height */
+   min-height: 520px;   /* desktop baseline */
+  max-height: 77vh; /* 🔒 fixed height */
   background: #0b0c0c;
   border-radius: 24px;
   overflow: hidden;
