@@ -5,8 +5,9 @@ import Home from "./pages/Home";
 function App() {
   return (
     <>
-      <Navbar />
       <Cursor />
+      <Navbar />
+      
       <Home />
     </>
   );
