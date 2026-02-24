@@ -14,19 +14,23 @@ export default function Work() {
     const track = trackRef.current;
     const section = sectionRef.current;
 
-    const scrollLength = track.scrollWidth - window.innerWidth;
+    // Calculate the exact scrollable distance
+    const scrollLength = track.scrollWidth - section.offsetWidth;
 
     const tween = gsap.to(track, {
-      x: -scrollLength,
+      x: -scrollLength,      // move track to the left by scrollable distance
       ease: "none",
-      scrollTrigger: {
-        trigger: section,
-        start: "top top",
-        end: () => `+=${track.scrollWidth}`,
-        scrub: 1,
-        pin: true,
-        anticipatePin: 1,
-      },
+    scrollTrigger: {
+  trigger: section,
+  start: "top top",
+  end: () => `+=${track.scrollWidth - window.innerWidth}`, // end after scrolling the track's width
+  scrub: 1,
+  pin: true,
+  anticipatePin:1,
+  // invalidateOnRefresh: true,
+  // pinSpacing: false,  // prevent extra space after pinning
+  // scrub: 1,
+}
     });
 
     return () => {

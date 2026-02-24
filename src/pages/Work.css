@@ -1,22 +1,35 @@
 .work-section {
   position: relative;
-  background: #F0EDE5;
+  background-color: #F0EDE5;
+  
   justify-content: center;
   align-items: center;  
   
 }
 
+
 /* PINNED AREA */
 .work-horizontal {
-  height: 100vh;
-  overflow: hidden;
+  /* height: auto; */
+  /* background-color: #F0EDE5; */
+  /* overflow-x: auto;    */
+  overflow: auto; 
+  /* display: flex; */
+  align-items: center;
+  min-height: 100vh;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;
+  /* padding-top: 1rem;  space for hover */
+}
+.work-horizontal::-webkit-scrollbar {
+  display: none;
 }
 .work-heading {
   font-size: clamp(4rem, 5vw, 4rem);
   margin: 0 auto 4rem auto;   /* center horizontally */
   font-weight: 500;
   line-height: 1.2;
-  max-width: 900px;
+  /* max-width: 900px; */
   color: #004643;
   text-align: center;         /* center text */
 }
@@ -27,5 +40,6 @@
   flex-direction: row;   /* MUST */
   gap: 4rem;
   padding: 0 6rem;
-  width: max-content;    /* MUST */
+  background-color: #F0EDE5;
+  width: max-content;    
 }
