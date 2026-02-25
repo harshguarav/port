@@ -22,7 +22,7 @@ export default function Work() {
       ease: "none",
     scrollTrigger: {
   trigger: section,
-  start: "top top",
+  start: "top -5%",
   end: () => `+=${track.scrollWidth - window.innerWidth}`, // end after scrolling the track's width
   scrub: 1,
   pin: true,

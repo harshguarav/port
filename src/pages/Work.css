@@ -38,7 +38,7 @@
 .work-track {
   display: flex;          /* MUST */
   flex-direction: row;   /* MUST */
-  gap: 4rem;
+  gap: 9rem;
   padding: 0 6rem;
   background-color: #F0EDE5;
   width: max-content;    
