@@ -25,7 +25,7 @@ export default function Work() {
     return "top -10%";
   }
   if (h <= 770) {
-    return "top -15%";
+    return "top -6%";
   }
 
   // 🟢 NORMAL / LARGE SCREENS → smooth width mapping
@@ -37,8 +37,8 @@ export default function Work() {
   const startPercent = gsap.utils.mapRange(
     minW,
     maxW,
-    20,    // small width
-    -12,   // large width
+    25,    // small width
+    -7,   // large width
     clampedW
   );
 
