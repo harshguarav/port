@@ -62,6 +62,7 @@ export default function Work() {
         end: () => `+=${getScrollLength()}`,
         scrub: 1,
         pin: true,
+        // pinSpacing: window.innerHeight > 700,
         anticipatePin: 1,
         invalidateOnRefresh: true,         // 🔑 recalculates on resize
       },
