@@ -48,7 +48,7 @@
   padding: clamp(1rem, 3vh, 2rem);  /* scales padding */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   gap: clamp(0.5rem, 1vw, 0.75rem);   /* scales gap */
 }
 
@@ -84,7 +84,7 @@
   -webkit-line-clamp: 4; /* change to 3 if needed */
   overflow: hidden;
 
-  margin-bottom: auto;
+  /* margin-bottom: auto; */
 }
 
 /* ===========================
@@ -93,7 +93,9 @@
 .card__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: clamp(0.2rem, 0.5vw, 0.4rem);
+  
+  margin-bottom: 1rem;
+  gap: clamp(0.01rem, 0.5rem, 0.4rem);
 }
 
 .card__tags span {

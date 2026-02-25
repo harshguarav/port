@@ -10,27 +10,61 @@ export default function Work() {
   const sectionRef = useRef(null);
   const trackRef = useRef(null);
 
-  useEffect(() => {
-    const track = trackRef.current;
-    const section = sectionRef.current;
+  // 🎯 Height + Width aware start
+  const getDynamicStart = () => {
+  const w = window.innerWidth;
+  const h = window.innerHeight;
 
-    // Calculate the exact scrollable distance
-    const scrollLength = track.scrollWidth - section.offsetWidth;
+  // 🔴 VERY SHORT SCREENS (your case: 600px)
+  if (h <= 620) {
+    return "top -15%";
+  }
+
+  // 🟠 SHORT LAPTOP SCREENS
+  if (h <= 700) {
+    return "top -10%";
+  }
+  if (h <= 770) {
+    return "top -15%";
+  }
+
+  // 🟢 NORMAL / LARGE SCREENS → smooth width mapping
+  const minW = 360;
+  const maxW = 1600;
+
+  const clampedW = Math.min(Math.max(w, minW), maxW);
+
+  const startPercent = gsap.utils.mapRange(
+    minW,
+    maxW,
+    20,    // small width
+    -12,   // large width
+    clampedW
+  );
+
+  return `top ${startPercent}%`;
+};
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const track = trackRef.current;
+    if (!section || !track) return;
+
+    const getScrollLength = () =>
+      track.scrollWidth - section.offsetWidth;
 
     const tween = gsap.to(track, {
-      x: -scrollLength,      // move track to the left by scrollable distance
+      x: () => -getScrollLength(),
       ease: "none",
-    scrollTrigger: {
-  trigger: section,
-  start: "top -5%",
-  end: () => `+=${track.scrollWidth - window.innerWidth}`, // end after scrolling the track's width
-  scrub: 1,
-  pin: true,
-  anticipatePin:1,
-  // invalidateOnRefresh: true,
-  // pinSpacing: false,  // prevent extra space after pinning
-  // scrub: 1,
-}
+      scrollTrigger: {
+        trigger: section,
+        start: getDynamicStart,            // ✅ height-aware
+        end: () => `+=${getScrollLength()}`,
+        scrub: 1,
+        pin: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,         // 🔑 recalculates on resize
+      },
     });
 
     return () => {
@@ -40,17 +74,28 @@ export default function Work() {
   }, []);
 
   return (
-    <section id="project-section" className="work-section" ref={sectionRef}>
+    <section
+      id="project-section"
+      className="work-section"
+      ref={sectionRef}
+    >
       <h2 className="work-heading">✦ Craft, Design & Innovate.</h2>
 
       <div className="work-horizontal">
         <div className="work-track" ref={trackRef}>
           <Card
             image="/images/bingo.png"
-            category="Real time Multiplayer"
+            category="Real Time Multiplayer"
             title="Bingo Game"
-            description="Engineered a scalable real-time bingo gaming platform supporting 100+ concurrent players, achieving 40% faster game-state synchronization by optimizing WebSocket-based communication protocols. Designed and deployed a load-balanced AWS EC2 architecture ensuring 99.9% uptime and sustaining 500+ requests per second under peak traffic"
-            tags={["Next.js", "Prisma", "PostgreSQL", "AWS EC2", "WebSockets", "TypeScript"]}
+            description="Engineered a scalable real-time bingo platform using WebSockets and AWS EC2, supporting 100+ concurrent players with low latency. Implemented secure user authentication and dynamic game rooms."
+            tags={[
+              "Next.js",
+              "Prisma",
+              "PostgreSQL",
+              "AWS EC2",
+              "WebSockets",
+              "TypeScript",
+            ]}
             link="https://github.com/harshguarav/BINGO-main"
           />
 
@@ -58,8 +103,14 @@ export default function Work() {
             image="/images/url.png"
             category="System Design"
             title="MiniLink URL Shortener"
-            description="Designed and developed a scalable URL shortening service with custom domain support, analytics dashboard, and secure token generation. Implemented a robust backend using Node.js and Express, integrated with MongoDB for efficient data storage and retrieval."
-            tags={["Caching", "Express", "MongoDB", "Sharding", "Next.js", "Node"]}
+            description="Scalable URL shortener with analytics and caching. Built with Next.js, Prisma, and MongoDB, featuring user authentication and real-time analytics dashboard."
+            tags={[
+              "Express",
+              "MongoDB",
+              "Caching",
+              "Next.js",
+              "Node",
+            ]}
             link="https://github.com/harshguarav/MiniLink"
           />
 
@@ -67,17 +118,27 @@ export default function Work() {
             image="/images/cpu.jpg"
             category="OS Visualizer"
             title="CPU Scheduler"
-            description="Developed a web-based OS operating system and algorithm visualizer using React and D3.js, enabling users to interactively explore OS concepts and algorithmic processes. Implemented features such as process scheduling, memory management, and sorting algorithm visualization, enhancing educational engagement and understanding of complex topics."
-            tags={["C++", "D3.js", "Operating System", "File System", "STL"]}
-            link="https://github.com/harshguarav/CPU_Scheduling/tree/main/CPU-Scheduler-main"
+            description="Interactive OS and algorithm visualizer for CPU scheduling. Built with C++ and D3.js, it simulates various scheduling algorithms and visualizes process execution timelines."
+            tags={[
+              "C++",
+              "D3.js",
+              "Operating System",
+            ]}
+            link="https://github.com/harshguarav/CPU_Scheduling"
           />
 
           <Card
             image="/images/employee.png"
-            category="Employee Management System"
+            category="Employee Management"
             title="Penthara HRMS"
-            description="Designed and developed a comprehensive employee management system with features like attendance tracking, leave management, and performance reviews. Implemented a responsive UI using React and integrated with a RESTful backend API for seamless data synchronization."
-            tags={["React", "Next.js", "Tailwind", "Node", "Prisma", "PostgreSQL"]}
+            description="HRMS with attendance and performance tracking. Built with React, Next.js, Prisma, and PostgreSQL, it features employee profiles, attendance logs, performance reviews, and a user-friendly dashboard."
+            tags={[
+              "React",
+              "Next.js",
+              "Tailwind",
+              "Prisma",
+              "PostgreSQL",
+            ]}
             link="https://github.com/harshguarav/employee_directory"
           />
         </div>
